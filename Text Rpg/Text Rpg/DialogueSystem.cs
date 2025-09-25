@@ -1,7 +1,7 @@
 ﻿
 class DialougeSystem
 {
-
+    
     private string SpeakerName;
     private string Dialouge; 
  
