@@ -10,8 +10,9 @@ DialougeSystem NarratorDialouge2 = new DialougeSystem("Narrator", "You look arou
 DialougeSystem NarratorDialouge3 = new DialougeSystem("Narrator", "You go throug the door, and to your suprise there is a shop to your left");
 
 // Dialouge end 
+TestShop.BuyItems();
+//TestShop.UseAllItems();
 
-TestShop.UseAllItems();
 PlayerChoice();
 
 
@@ -21,7 +22,7 @@ void PlayerChoice()
 {
     NarratorDialouge1.displayDialouge();
     NarratorDialouge2.displayDialouge();
-
+    
     Console.WriteLine("Press 1 to jump out of the window | Press 2 to go through the door");
     int spillervalg = int.Parse(Console.ReadLine());
 
