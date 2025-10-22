@@ -2,12 +2,12 @@
 
 class Shop
 {
-   public MoneySystem money = new MoneySystem();
+    public MoneySystem money = new MoneySystem();
+    public PlayerInventorySystem PlayerInventory = new PlayerInventorySystem();
 
+   
+    Item[] ShopInventory = { new Item(), new Potion() };
     
-
-    item[] ShopInventory = { new item(), new Potion() };
-    item[] PlayerInventory = new item[4];
     public void BuyItems()
     {
         Console.WriteLine(ShopInventory[0] + " | " +ShopInventory[1]);
@@ -15,13 +15,12 @@ class Shop
         int shopSpillervalg = int.Parse(Console.ReadLine());
         if (shopSpillervalg == 1 && money.Gold >= 500 )
         {
-            PlayerInventory[0] = ShopInventory[0];
-            Console.WriteLine(PlayerInventory[0]);
+            PlayerInventory.Inventory[0] = ShopInventory[0];
         }
         else if (shopSpillervalg == 2 && money.Gold >= 37)
         {
-            PlayerInventory[0] = ShopInventory[1];
-            Console.WriteLine(PlayerInventory[0]);
+            PlayerInventory.Inventory[0] = ShopInventory[1];
+            Console.WriteLine(PlayerInventory.Inventory[0]);
             
         }
         else
@@ -38,6 +37,44 @@ class Shop
             ShopInventory[i].Use();
         }
     }
+
+    public void UseItemInInventory()
+    {
+
+        Console.Clear();
+        Console.WriteLine("---USE AN ITEM---");
+        Console.WriteLine("Press 1 to use " + PlayerInventory.Inventory[0] + " |" + " Press 2 to use " + PlayerInventory.Inventory[1] + " |" + " Press 3 to use " + PlayerInventory.Inventory[2] + " |" + " Press 4 to use " + PlayerInventory.Inventory[3]);
+        Console.WriteLine("To quit this menu press 0");
+        int InventoryItemChoice = int.Parse(Console.ReadLine());
+        if (InventoryItemChoice == 1)
+        {
+
+            PlayerInventory.Inventory[0].Use();
+        }
+        else if (InventoryItemChoice == 2)
+        {
+            PlayerInventory.Inventory[1].Use();
+        }
+        else if (InventoryItemChoice == 3)
+        {
+            PlayerInventory.Inventory[2].Use();
+        }
+        else if (InventoryItemChoice == 4)
+        {
+            PlayerInventory.Inventory[3].Use();
+        }
+        else if (InventoryItemChoice == 0)
+        {
+
+        }
+
+    }
+    
 }
 
+class PlayerInventorySystem
+{
 
+    public Item[] Inventory = new Item[4];
+
+}

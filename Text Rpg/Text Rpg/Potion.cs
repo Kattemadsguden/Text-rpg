@@ -1,4 +1,4 @@
-﻿public class Potion : item
+﻿public class Potion : Item
 {
     public override void Use()
     {

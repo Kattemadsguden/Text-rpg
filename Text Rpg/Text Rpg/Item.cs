@@ -1,4 +1,4 @@
-﻿public class item
+﻿public class Item
 {
     public virtual void Use()
     {
