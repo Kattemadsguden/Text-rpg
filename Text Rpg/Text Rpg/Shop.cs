@@ -10,22 +10,32 @@ class Shop
     
     public void BuyItems()
     {
-        Console.WriteLine(ShopInventory[0] + " | " +ShopInventory[1]);
-        Console.WriteLine("press 1 to buy " + ShopInventory[0] + " | " + "press 2 to buy " + ShopInventory[1] );
-        int shopSpillervalg = int.Parse(Console.ReadLine());
-        if (shopSpillervalg == 1 && money.Gold >= 500 )
+        while (true)
         {
-            PlayerInventory.Inventory[0] = ShopInventory[0];
-        }
-        else if (shopSpillervalg == 2 && money.Gold >= 37)
-        {
-            PlayerInventory.Inventory[0] = ShopInventory[1];
-            Console.WriteLine(PlayerInventory.Inventory[0]);
-            
-        }
-        else
-        {
-            Console.WriteLine("you are broke and couldn't afford the item");
+            Console.WriteLine(ShopInventory[0] + " | " + ShopInventory[1]);
+            Console.WriteLine("press 1 to buy " + ShopInventory[0] + " | " + "press 2 to buy " + ShopInventory[1]);
+            Console.WriteLine("press 0 to quit shop menu");
+            int shopSpillervalg = int.Parse(Console.ReadLine());
+            if (shopSpillervalg == 1 && money.Gold >= 500)
+            {
+                PlayerInventory.Inventory[0] = ShopInventory[0];
+            }
+            else if (shopSpillervalg == 2 && money.Gold >= 37)
+            {
+                PlayerInventory.Inventory[0] = ShopInventory[1];
+                Console.WriteLine(PlayerInventory.Inventory[0]);
+                
+            }
+            else if (shopSpillervalg == 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("you are broke and couldn't afford the item");
+                
+            }
         }
     }
 

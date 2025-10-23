@@ -7,12 +7,20 @@
     {
         Console.WriteLine("You have " + HP + " HP");
     }
-
+   
+    public void TakeDamage()
+    {
+        HP -= 10;
+        Console.WriteLine("You lost 10 HP");
+        HpReader();
+    }
+   
+   
 }
 public class MoneySystem
 {
-    public int Gold = 50;
 
+    public int Gold = 50;
 
     public void GoldReader()
     {
