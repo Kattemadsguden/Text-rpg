@@ -53,7 +53,7 @@ void Rungame()
             Console.Clear();
 
             NarratorDialouge4.displayDialouge();
-            PlayerHpSystem.TakeDamage();            
+            PlayerHpSystem.TakeDamage(); 
 
             Continue(); 
             

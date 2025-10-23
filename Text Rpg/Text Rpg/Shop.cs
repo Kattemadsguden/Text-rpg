@@ -12,6 +12,7 @@ class Shop
     {
         while (true)
         {
+            Console.WriteLine("You have " + money.Gold + " Gold");
             Console.WriteLine(ShopInventory[0] + " | " + ShopInventory[1]);
             Console.WriteLine("press 1 to buy " + ShopInventory[0] + " | " + "press 2 to buy " + ShopInventory[1]);
             Console.WriteLine("press 0 to quit shop menu");
@@ -19,11 +20,17 @@ class Shop
             if (shopSpillervalg == 1 && money.Gold >= 500)
             {
                 PlayerInventory.Inventory[0] = ShopInventory[0];
+
             }
             else if (shopSpillervalg == 2 && money.Gold >= 37)
             {
+                
+                
+                CheckInventorySpace();
                 PlayerInventory.Inventory[0] = ShopInventory[1];
                 Console.WriteLine(PlayerInventory.Inventory[0]);
+                money.Gold -= 37;
+
                 
             }
             else if (shopSpillervalg == 0)
@@ -79,6 +86,35 @@ class Shop
         }
 
     }
+
+    public void InventoryActivate()
+    {
+        Console.WriteLine("Press i to open inventory");
+        string InventoryACTIVATEkey = Console.ReadLine();
+        if (InventoryACTIVATEkey == "i")
+        {
+            UseItemInInventory();
+        }
+    }
+
+    public void CheckInventorySpace()
+    {
+        for (int i = 0; i < PlayerInventory.Inventory.Length; i++)
+        {
+            if (PlayerInventory.Inventory[i] == null)
+            {
+                break ;
+            }
+            else if (PlayerInventory.Inventory[0] != null && PlayerInventory.Inventory[1] != null && PlayerInventory.Inventory[2] != null && PlayerInventory.Inventory[3] != null)
+            {
+                Console.WriteLine("You dont have any space in your inventory");
+                BuyItems();
+                                                                                                                                                                                                                                                                                                }
+
+        }
+       
+        
+    }
     
 }
 
@@ -86,5 +122,6 @@ class PlayerInventorySystem
 {
 
     public Item[] Inventory = new Item[4];
+
 
 }
