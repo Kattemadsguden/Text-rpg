@@ -8,6 +8,6 @@
 
     public virtual void Use(HpSystem hpSystem)
     {
-        
+        Console.WriteLine("Method Overload Use");
     }
 }

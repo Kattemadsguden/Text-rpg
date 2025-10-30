@@ -4,6 +4,7 @@ class Shop
 {
     public MoneySystem money = new MoneySystem();
     public PlayerInventorySystem PlayerInventory = new PlayerInventorySystem();
+    HpSystem MainHp = new HpSystem();
 
    
     Item[] ShopInventory = { new Item(), new Potion() };
@@ -27,9 +28,31 @@ class Shop
                 
                 
                 CheckInventorySpace();
-                PlayerInventory.Inventory[0] = ShopInventory[1];
-                Console.WriteLine(PlayerInventory.Inventory[0]);
-                money.Gold -= 37;
+                if (PlayerInventory.Inventory[0] == null)
+                {
+                    PlayerInventory.Inventory[0] = ShopInventory[1];
+                    Console.WriteLine(PlayerInventory.Inventory[0]);
+                    money.Gold -= 37;
+                }
+                else if (PlayerInventory.Inventory[1] == null)
+                {
+                    PlayerInventory.Inventory[1] = ShopInventory[1];
+                    Console.WriteLine(PlayerInventory.Inventory[1]);
+                    money.Gold -= 37;
+
+                }
+                else if (PlayerInventory.Inventory[2] == null)
+                {
+                    PlayerInventory.Inventory[2] = ShopInventory[1];
+                    Console.WriteLine(PlayerInventory.Inventory[2]);
+                    money.Gold -= 37;
+                }
+                else if (PlayerInventory.Inventory[3] == null)
+                {
+                    PlayerInventory.Inventory[3] = ShopInventory[1];
+                    Console.WriteLine(PlayerInventory.Inventory[3]);
+                    money.Gold -= 37;
+                }
 
                 
             }
@@ -66,19 +89,19 @@ class Shop
         if (InventoryItemChoice == 1)
         {
 
-            PlayerInventory.Inventory[0].Use();
+            PlayerInventory.Inventory[0].Use(MainHp);
         }
         else if (InventoryItemChoice == 2)
         {
-            PlayerInventory.Inventory[1].Use();
+            PlayerInventory.Inventory[1].Use(MainHp);
         }
         else if (InventoryItemChoice == 3)
         {
-            PlayerInventory.Inventory[2].Use();
+            PlayerInventory.Inventory[2].Use(MainHp);
         }
         else if (InventoryItemChoice == 4)
         {
-            PlayerInventory.Inventory[3].Use();
+            PlayerInventory.Inventory[3].Use(MainHp);
         }
         else if (InventoryItemChoice == 0)
         {
@@ -103,7 +126,7 @@ class Shop
         {
             if (PlayerInventory.Inventory[i] == null)
             {
-                break ;
+                continue ;
             }
             else if (PlayerInventory.Inventory[0] != null && PlayerInventory.Inventory[1] != null && PlayerInventory.Inventory[2] != null && PlayerInventory.Inventory[3] != null)
             {
@@ -115,7 +138,19 @@ class Shop
        
         
     }
-    
+
+    public void HpReader()
+    {
+        Console.WriteLine("You have " + MainHp.Hp + " HP");
+    }
+
+    public void TakeDamage()
+    {
+        MainHp.Hp -= 10;
+        Console.WriteLine("You lost 10 HP");
+        HpReader();
+    }
+
 }
 
 class PlayerInventorySystem

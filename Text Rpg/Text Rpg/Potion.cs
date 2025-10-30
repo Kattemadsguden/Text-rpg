@@ -3,9 +3,9 @@
     
     public override void Use(HpSystem hpSystem)
     {
-        
         Console.WriteLine("drinking potion");
-        hpSystem.HP += 10;
+        hpSystem.Hp += 10;
+        
         
     }
 
